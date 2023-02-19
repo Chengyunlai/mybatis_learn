@@ -32,10 +32,9 @@
 
     <!--类型处理器-->
     <!--注意在注册 TypeHandler 的时候，需要把对应的 javaType 和 jdbcType 也都声明好-->
-    <!--<typeHandlers>-->
-    <!--    <typeHandler handler="top.chengyunlai.typeHandle.DepartmentTypeHandler"-->
-    <!--                 javaType="top.chengyunlai.bean.Department" jdbcType="VARCHAR"/>-->
-    <!--</typeHandlers>-->
+    <typeHandlers>
+        <typeHandler handler="top.chengyunlai.typeHandle.DateTypeHandler"/>
+    </typeHandlers>
 
     <objectFactory type="top.chengyunlai.objectFactory.ExtendsObjectFactory"/>
 

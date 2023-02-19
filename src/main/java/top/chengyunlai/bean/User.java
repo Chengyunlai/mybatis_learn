@@ -22,7 +22,7 @@ public class User {
 
     private Integer age;
 
-    private Date birthday;
+    private String birthday;
 
     private Integer version;
     // 多对一
