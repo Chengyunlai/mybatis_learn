@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--properties 属性，它的作用是定义全局配置变量，并且它可以加载外部化的 properties 配置文件-->
+
+    <!--<properties>-->
+    <!--    <property name="jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>-->
+    <!--    <property name="jdbc.url" value="jdbc:mysql://localhost:3306/spring?characterEncoding=utf-8&amp;useSSL=false"/>-->
+    <!--    <property name="jdbc.username" value="root"/>-->
+    <!--    <property name="jdbc.password" value="root"/>-->
+    <!--</properties>-->
+
+    <!--读取外部文件-->
+    <properties resource="jdbc.properties"/>
+
+    <!--设置：见https://mybatis.org/mybatis-3/zh/configuration.html#settings-->
+    <!--<settings>-->
+    <!--    <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+    <!--</settings>-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--类型别名-->
+    <!--typeAliases 类型别名的设置，是考虑到 mapper.xml 中我们每次写实体类的时候，
+    都要写它们的全限定类名，太麻烦，于是 MyBatis 提供了类型别名的机制-->
+    <typeAliases>
+        <package name="top.chengyunlai.bean"/>
+    </typeAliases>
+
+    <!--类型处理器-->
+    <!--注意在注册 TypeHandler 的时候，需要把对应的 javaType 和 jdbcType 也都声明好-->
+    <!--<typeHandlers>-->
+    <!--    <typeHandler handler="top.chengyunlai.typeHandle.DepartmentTypeHandler"-->
+    <!--                 javaType="top.chengyunlai.bean.Department" jdbcType="VARCHAR"/>-->
+    <!--</typeHandlers>-->
+
+    <objectFactory type="top.chengyunlai.objectFactory.ExtendsObjectFactory"/>
+
+    <!--它允许我们定义多个环境，以分别定义不同的数据库连接配置。
+    这种场景在我们平时开发中是很常见的：开发、测试、生产分别要用到 3 种不同的环境，连接 3 个不同的数据库，这个时候就需要分别配置了。
+    不过，尽管我们可以定义多个环境配置，但激活生效的只允许选择一个，激活的方式是在 <environments> 标签上声明 default 属性。-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+        <!--生产环境-->
+        <environment id="production">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${prod.driverClassName}"/>
+                <property name="url" value="${prod.url}"/>
+                <property name="username" value="${prod.username}"/>
+                <property name="password" value="${prod.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--数据库厂商标识-->
+    <databaseIdProvider type="DB_VENDOR"> <!-- DB_VENDOR是固定的 -->
+        <property name="MySQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+        <property name="PostgreSQL" value="postgresql"/>
+    </databaseIdProvider>
+
+    <mappers>
+        <!-- 直接加载mapper.xml -->
+        <!--<mapper resource="mapper/department.xml"/>-->
+
+        <!-- 加载Mapper接口 -->
+        <!--<mapper class="com.linkedbear.mybatis.mapper.UserMapper"/>-->
+
+        <!-- 包扫描Mapper接口 -->
+        <!--<package name="com.linkedbear.mybatis.mapper"/>-->
+
+        <!--<mapper resource="top/chengyunlai/mapper/DepartmentMapper.xml"/>-->
+        <!--<mapper resource="top/chengyunlai/mapper/UserMapper.xml"/>-->
+        <package name="top.chengyunlai.mapper"></package>
+    </mappers>
+
+</configuration>
