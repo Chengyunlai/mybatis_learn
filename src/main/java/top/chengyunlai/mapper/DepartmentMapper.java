@@ -18,5 +18,7 @@ public interface DepartmentMapper {
 
     List<Department> findAll();
 
+    List<Department> findAll2();
+
     Department findById(String id);
 }

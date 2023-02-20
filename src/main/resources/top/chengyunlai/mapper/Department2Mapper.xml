@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.chengyunlai.mapper.Department2Mapper">
+    <!--
+    自增测试
+    useGeneratedKeys 开启使用，则 MyBatis 会使用 jdbc 底层的 getGeneratedKeys 方法，取出自增主键的值
+
+    keyProperty 需要指定传入参数对象的属性名（JavaBean的属性名）
+
+    相当于一个取出值封装到哪的操作
+
+    keyColumn 指明需要自增的列名是什么
+    -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into tbl_dept2 (name, tel) VALUES (#{name}, #{tel})
+    </insert>
+
+    <!--没有自增的测试，主要测试@Param注解-->
+    <insert id="save2">
+        insert into tbl_dept2 (name, tel) VALUES (#{name}, #{tel})
+    </insert>
+
+    <!--没有自增的测试-->
+    <insert id="save3">
+        insert into tbl_dept2 (name, tel) VALUES (#{name}, #{tel})
+    </insert>
+</mapper>

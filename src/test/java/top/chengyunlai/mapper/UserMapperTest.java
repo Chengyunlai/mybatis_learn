@@ -104,4 +104,24 @@ public class UserMapperTest {
 
 
     }
+
+    @Test
+    public void findAll2() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> all2 = mapper.findAll2();
+        for (User user : all2) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void findAll3() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> all2 = mapper.findAll3();
+        for (User user : all2) {
+            System.out.println(user);
+        }
+    }
 }

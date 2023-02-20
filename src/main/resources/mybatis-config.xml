@@ -83,6 +83,7 @@
 
         <!--<mapper resource="top/chengyunlai/mapper/DepartmentMapper.xml"/>-->
         <!--<mapper resource="top/chengyunlai/mapper/UserMapper.xml"/>-->
+        <!--扫描要配合@Mapper注解-->
         <package name="top.chengyunlai.mapper"></package>
     </mappers>
 

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.apache.ibatis.annotations.Param;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -20,6 +21,9 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 public class Department implements Serializable {
+    public Department(@Param("idd")String id) {
+        this.id = id;
+    }
     private String id;
 
     private String name;

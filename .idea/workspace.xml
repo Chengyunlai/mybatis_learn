@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="类型处理器，Java类型和JDBC类型之间的封装">
+    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="一二级缓存的实验">
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/bean/Department2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/Department2Mapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/Department2Mapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/Department2MapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/chengyunlai/bean/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/bean/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/DepartmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/DepartmentMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/DepartmentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/DepartmentMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/DepartmentMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +27,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Mybatis Mapper" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -74,7 +82,23 @@
       <recent name="top.chengyunlai.mapper" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserMapperTest.cleanCache">
+  <component name="RunManager" selected="JUnit.DepartmentMapperTest.findAll">
+    <configuration name="Department2MapperTest.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis_learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
+      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.Department2MapperTest" />
+      <option name="METHOD_NAME" value="save" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DepartmentMapperTest.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
@@ -91,7 +115,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperTest.cleanCache" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DepartmentMapperTest.findAll2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -100,14 +124,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
-      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="cleanCache" />
+      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.DepartmentMapperTest" />
+      <option name="METHOD_NAME" value="findAll2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperTest.findAllByDepartmentIdProvider" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTest.findAll2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -117,13 +141,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
       <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="findAllByDepartmentIdProvider" />
+      <option name="METHOD_NAME" value="findAll2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperTest.findAllUseTypeHandler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTest.findAll3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -133,23 +157,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
       <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="findAllUseTypeHandler" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserMapperTest.saveUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis_learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
-      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="saveUser" />
+      <option name="METHOD_NAME" value="findAll3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -157,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserMapperTest.cleanCache" />
-        <item itemvalue="JUnit.UserMapperTest.findAllUseTypeHandler" />
-        <item itemvalue="JUnit.UserMapperTest.findAllByDepartmentIdProvider" />
         <item itemvalue="JUnit.DepartmentMapperTest.findAll" />
-        <item itemvalue="JUnit.UserMapperTest.saveUser" />
+        <item itemvalue="JUnit.UserMapperTest.findAll3" />
+        <item itemvalue="JUnit.UserMapperTest.findAll2" />
+        <item itemvalue="JUnit.DepartmentMapperTest.findAll2" />
+        <item itemvalue="JUnit.Department2MapperTest.save" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +182,7 @@
       <option name="presentableId" value="Default" />
       <updated>1676783235825</updated>
       <workItem from="1676783237190" duration="23181000" />
-      <workItem from="1676857823666" duration="12981000" />
+      <workItem from="1676857823666" duration="20139000" />
     </task>
     <task id="LOCAL-00001" summary="基本配置文件的配置信息；单表查询；关联表查询">
       <created>1676797003483</created>
@@ -190,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676813001700</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="一二级缓存的实验">
+      <created>1676882829733</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676882829733</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +225,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="基本配置文件的配置信息；单表查询；关联表查询" />
     <MESSAGE value="类型处理器，Java类型和JDBC类型之间的封装" />
-    <option name="LAST_COMMIT_MESSAGE" value="类型处理器，Java类型和JDBC类型之间的封装" />
+    <MESSAGE value="一二级缓存的实验" />
+    <option name="LAST_COMMIT_MESSAGE" value="一二级缓存的实验" />
   </component>
 </project>

@@ -16,6 +16,8 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     List<User> findAll();
+    List<User> findAll2();
+    List<User> findAll3();
 
     List<User> findAllLazy();
 

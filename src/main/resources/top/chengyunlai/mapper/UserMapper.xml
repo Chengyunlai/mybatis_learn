@@ -35,6 +35,27 @@
         </association>
     </resultMap>
 
+    <!--直接引用-->
+    <resultMap id="userMapDire" type="user">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="birthday" column="birthday"/>
+        <!--封装的是一个类-->
+        <association property="department" javaType="department" resultMap="top.chengyunlai.mapper.DepartmentMapper.department">
+        </association>
+    </resultMap>
+
+    <!--带前缀引用-->
+    <resultMap id="userWithPrefix" type="user">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="birthday" column="birthday"/>
+        <association property="department" javaType="department"
+                     resultMap="top.chengyunlai.mapper.DepartmentMapper.department" columnPrefix="department_"/>
+    </resultMap>
+
     <select id="findAll" resultMap="userMap">
         select usr.*, dep.name as department_name,dep.tel
         from tbl_user usr
@@ -72,4 +93,17 @@
         select count(id) from tbl_user
     </select>
 
+    <!--这里的resultMap封装的时候用了其他命名空间的Map，但是是使用columnPrefix定义了前缀的，这个前缀需要在sql语句中指定-->
+    <!--它可以在封装结果集时，自动取出 "指定前缀 + column" 的列封装到指定的 resultMap 中-->
+    <select id="findAll2" resultMap="userWithPrefix"> <!-- 注意这里的resultMap是上面新定义的 -->
+        select usr.*, dep.name as department_name, dep.tel as department_tel
+        from tbl_user usr
+        left join tbl_department dep on usr.department_id = dep.id
+    </select>
+
+    <select id="findAll3" resultMap="userMapDire">
+        select usr.*, dep.tel
+        from tbl_user usr
+        left join tbl_department dep on usr.department_id = dep.id
+    </select>
 </mapper>
