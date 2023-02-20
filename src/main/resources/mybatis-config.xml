@@ -21,6 +21,7 @@
     <!--</settings>-->
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <!--<setting name="localCacheScope" value="STATEMENT"/>-->
     </settings>
 
     <!--类型别名-->

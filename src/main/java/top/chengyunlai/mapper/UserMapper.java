@@ -27,4 +27,7 @@ public interface UserMapper {
 
     // void saveUser(User user);
 
+    // 缓存
+    int cleanCache();
+
 }

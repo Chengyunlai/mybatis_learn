@@ -68,4 +68,8 @@
         select * from users where department_id = #{departmentId}
     </select>
 
+    <select id="cleanCache" resultType="int" flushCache="true">
+        select count(id) from tbl_user
+    </select>
+
 </mapper>

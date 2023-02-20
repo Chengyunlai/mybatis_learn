@@ -10,6 +10,8 @@
                     select="top.chengyunlai.mapper.UserMapper.findAllByDepartmentId" column="id"/>
     </resultMap>
 
+    <!--<cache/>-->
+
     <insert id="save" parameterType="department">
         insert into tbl_department (id, name, tel) values (#{id}, #{name}, #{tel});
     </insert>
