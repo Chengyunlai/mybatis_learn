@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="top.chengyunlai.mapper.UserMapper">
+
     <!--多对一的查询-->
     <resultMap id="userMap" type="user">
         <id property="id" column="id"/>
@@ -21,7 +22,7 @@
         <result property="age" column="age"/>
         <result property="birthday" column="birthday"/>
         <association property="department" javaType="department"
-                     select="top.chengyunlai. mapper.DepartmentMapper.findById" column="department_id"/>
+                     select="top.chengyunlai.mapper.DepartmentMapper.findById" column="department_id"/>
     </resultMap>
 
     <!--类型处理器-->
@@ -54,6 +55,13 @@
         <result property="birthday" column="birthday"/>
         <association property="department" javaType="department"
                      resultMap="top.chengyunlai.mapper.DepartmentMapper.department" columnPrefix="department_"/>
+    </resultMap>
+
+    <resultMap id="userWithDiscriminator" type="user">
+        <discriminator column="deleted" javaType="boolean">
+            <case value="false" resultMap="userlazy"/>
+            <case value="true" resultType="user"/>
+        </discriminator>
     </resultMap>
 
     <select id="findAll" resultMap="userMap">
@@ -105,5 +113,10 @@
         select usr.*, dep.tel
         from tbl_user usr
         left join tbl_department dep on usr.department_id = dep.id
+    </select>
+
+    <!--使用鉴别器,根据某个条件判断去封装成什么类型-->
+    <select id="findAllUseDiscriminator" resultMap="userWithDiscriminator">
+        select * from tbl_user
     </select>
 </mapper>

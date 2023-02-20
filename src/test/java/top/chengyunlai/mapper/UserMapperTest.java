@@ -31,6 +31,12 @@ public class UserMapperTest {
 
     @Test
     public void findAllLazy() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> allLazy = mapper.findAllLazy();
+        for (User user : allLazy) {
+            System.out.println(user);
+        }
     }
 
     @Test
@@ -123,5 +129,22 @@ public class UserMapperTest {
         for (User user : all2) {
             System.out.println(user);
         }
+    }
+
+    /**
+     * 阿程的deleted是1
+     * User(id=09ec5fcea620c168936deee53a9cdcfb, name=阿熊, age=18, birthday=2003-08-08 10:00:00.0, version=0, department=Department(id=18ec781fbefd727923b0d35740b177ab, name=开发部, tel=456, users=null))
+     * User(id=09ec5fcea620c168936deee53a9cdcff, name=阿程, age=50, birthday=2023年02月13日, version=0, department=null)
+     * User(id=5d0eebc4f370f3bd959a4f7bc2456d89, name=老狗, age=30, birthday=1991-02-20 15:27:20.0, version=0, department=Department(id=ee0e342201004c1721e69a99ac0dc0df, name=设计部, tel=123, users=null))
+     */
+    @Test
+    public void findAllUseDiscriminator() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> all2 = mapper.findAllUseDiscriminator();
+        for (User user : all2) {
+            System.out.println(user);
+        }
+
     }
 }

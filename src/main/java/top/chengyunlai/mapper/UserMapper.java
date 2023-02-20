@@ -18,6 +18,7 @@ public interface UserMapper {
     List<User> findAll();
     List<User> findAll2();
     List<User> findAll3();
+    List<User> findAllUseDiscriminator();
 
     List<User> findAllLazy();
 
