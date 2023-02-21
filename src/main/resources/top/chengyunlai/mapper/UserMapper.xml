@@ -119,4 +119,70 @@
     <select id="findAllUseDiscriminator" resultMap="userWithDiscriminator">
         select * from tbl_user
     </select>
+
+    <!--if测试的是参数-->
+    <!--and写在前面-->
+    <select id="findAllUser" parameterType="user" resultMap="userMap">
+        select * from tbl_user
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <!-- 借助OGNL直接获取department对象的id属性 -->
+            <if test="department != null">
+                <if test="department.id != null">
+                    and department_id = #{department.id}
+                </if>
+            </if>
+            <!-- 借助OGNL直接调用字符串的trim()方法 -->
+            <if test="name != null and name.trim() != ''">
+                and name like concat('%', #{name}, '%')
+            </if>
+            <!-- 包括可以直接调用静态常量、方法，使用运算符等 -->
+        </where>
+    </select>
+
+    <!--
+    prefix ：在整个标签【前面】附加指定内容
+    suffix ：在整个标签【最后】追加指定内容
+
+    prefixOverrides ：去掉【标签体内第一个指定】的关键字
+    suffixOverrides ：去掉标【签体内最后一个指定】的关键字
+    -->
+    <select id="findAllUseTrim" parameterType="user" resultMap="userMap">
+        select * from tbl_user
+        <trim prefix="where">
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </trim>
+    </select>
+
+    <!--多个条件选择其一-->
+    <select id="findByCondition" parameterType="user" resultMap="userMap">
+        select * from tbl_user
+        <choose>
+            <when test="id != null and id != '">
+                where id = #{id};
+            </when>
+            <when test="name != null and name != ''">
+                where name = #{name};
+            </when>
+        </choose>
+    </select>
+
+    <select id="findAllUseForeach" parameterType="list" resultType="user">
+        select * from tbl_user
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <!--bind类似声明一个变量-->
+    <select id="findAllUserUseBind" parameterType="user" resultType="user">
+        <bind name="namelike" value="'%' + _parameter.getName() + '%'"/>
+        select * from tbl_user
+        where name like #{namelike}
+    </select>
 </mapper>

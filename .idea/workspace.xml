@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="useGeneratedKeys 搭配 keyProperty 做插入对象时主键的回显&#10;resultMap的构造器封装；引用其他命名空间的resultMap；公共封装属性的继承">
+    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="使用鉴别器决定如何封装结果集">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/DepartmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/DepartmentMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/DepartmentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/DepartmentMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/DepartmentMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,24 +76,8 @@
       <recent name="top.chengyunlai.mapper" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserMapperTest.findAllUseDiscriminator">
-    <configuration name="DepartmentMapperTest.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis_learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
-      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.DepartmentMapperTest" />
-      <option name="METHOD_NAME" value="findAll" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserMapperTest.findAll2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserMapperTest.findAllUserUseBind">
+    <configuration name="UserMapperTest.findAllUseForeach" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -100,13 +87,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
       <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="findAll2" />
+      <option name="METHOD_NAME" value="findAllUseForeach" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperTest.findAll3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTest.findAllUseTrim" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -116,13 +103,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
       <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="findAll3" />
+      <option name="METHOD_NAME" value="findAllUseTrim" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperTest.findAllLazy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTest.findAllUserUseBind" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -132,13 +119,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
       <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="findAllLazy" />
+      <option name="METHOD_NAME" value="findAllUserUseBind" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperTest.findAllUseDiscriminator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTest.findByCondition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -148,7 +135,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
       <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
-      <option name="METHOD_NAME" value="findAllUseDiscriminator" />
+      <option name="METHOD_NAME" value="findByCondition" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.testFindAllUseTypeHandler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis_learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
+      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
+      <option name="METHOD_NAME" value="testFindAllUseTypeHandler" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,11 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserMapperTest.findAllUseDiscriminator" />
-        <item itemvalue="JUnit.UserMapperTest.findAllLazy" />
-        <item itemvalue="JUnit.UserMapperTest.findAll2" />
-        <item itemvalue="JUnit.UserMapperTest.findAll3" />
-        <item itemvalue="JUnit.DepartmentMapperTest.findAll" />
+        <item itemvalue="JUnit.UserMapperTest.findAllUserUseBind" />
+        <item itemvalue="JUnit.UserMapperTest.findAllUseForeach" />
+        <item itemvalue="JUnit.UserMapperTest.findByCondition" />
+        <item itemvalue="JUnit.UserMapperTest.findAllUseTrim" />
+        <item itemvalue="JUnit.UserMapperTest.testFindAllUseTypeHandler" />
       </list>
     </recent_temporary>
   </component>
@@ -173,7 +176,8 @@
       <option name="presentableId" value="Default" />
       <updated>1676783235825</updated>
       <workItem from="1676783237190" duration="23181000" />
-      <workItem from="1676857823666" duration="21082000" />
+      <workItem from="1676857823666" duration="24675000" />
+      <workItem from="1676941170600" duration="11642000" />
     </task>
     <task id="LOCAL-00001" summary="基本配置文件的配置信息；单表查询；关联表查询">
       <created>1676797003483</created>
@@ -203,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676895275274</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="使用鉴别器决定如何封装结果集">
+      <created>1676896203589</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676896203589</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +236,22 @@
     <MESSAGE value="类型处理器，Java类型和JDBC类型之间的封装" />
     <MESSAGE value="一二级缓存的实验" />
     <MESSAGE value="useGeneratedKeys 搭配 keyProperty 做插入对象时主键的回显&#10;resultMap的构造器封装；引用其他命名空间的resultMap；公共封装属性的继承" />
-    <option name="LAST_COMMIT_MESSAGE" value="useGeneratedKeys 搭配 keyProperty 做插入对象时主键的回显&#10;resultMap的构造器封装；引用其他命名空间的resultMap；公共封装属性的继承" />
+    <MESSAGE value="使用鉴别器决定如何封装结果集" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用鉴别器决定如何封装结果集" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/DepartmentMapperTest.java</url>
+          <line>55</line>
+          <properties class="top.chengyunlai.mapper.DepartmentMapperTest" method="findAll3">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

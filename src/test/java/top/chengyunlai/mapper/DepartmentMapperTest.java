@@ -51,4 +51,14 @@ public class DepartmentMapperTest {
             System.out.println(department);
         }
     }
+
+    @Test
+    public void findAll3() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DepartmentMapper mapper = sqlSession.getMapper(DepartmentMapper.class);
+        List<Department> res = mapper.findAll3(new Department(null, "开发", null, null));
+        for (Department re : res) {
+            System.out.println(re);
+        }
+    }
 }

@@ -10,6 +10,7 @@ import top.chengyunlai.bean.User;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -88,11 +89,12 @@ public class UserMapperTest {
         UserMapper userMapper2 = sqlSession.getMapper(UserMapper.class);
 
         Department department3 = departmentMapper2.findById("18ec781fbefd727923b0d35740b177ab");
-        userMapper.cleanCache(); // 注释该语句，则department3 == department4 为true
+        // userMapper.cleanCache(); // 注释该语句，则department3 == department4 为true
         Department department4 = departmentMapper2.findById("18ec781fbefd727923b0d35740b177ab");
         // 缓存会被视为读/写缓存，这意味着获取到的对象并不是共享的，可以安全地被调用者修改，而不干扰其他调用者或线程所做的潜在修改,所以想下述的操作并不会发送SQL
         System.out.println("department3 == department4 : " + (department3 == department4)); // false
 
+        sqlSession2.close();
 
         Department department = departmentMapper.findById("18ec781fbefd727923b0d35740b177ab");
         // 所有 namespace 的一级缓存和当前 namespace 的二级缓存均会清除;flushCache="true"
@@ -100,13 +102,14 @@ public class UserMapperTest {
         // userMapper2.cleanCache();
         Department department2 = departmentMapper.findById("18ec781fbefd727923b0d35740b177ab");
         System.out.println("department == department2 : " + (department == department2)); // true，没有开启二级缓存
+        System.out.println("department == department4 : " + (department == department4)); // false
 
         // 进行select操作后，调用SqlSession.close()方法，会将其一级缓存的数据放进二级缓存中
         // 此时一级缓存随着SqlSession的关闭也就不存在了
         sqlSession.close();
-        sqlSession2.close();
 
-        System.out.println("department == department4 : " + (department == department4)); // false
+
+
 
 
     }
@@ -146,5 +149,67 @@ public class UserMapperTest {
             System.out.println(user);
         }
 
+    }
+
+    @Test
+    public void testFindAllUseTypeHandler() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setId("09ec5fcea620c168936deee53a9cdcfb");
+        List<User> allUser = mapper.findAllUser(user);
+        for (User user1 : allUser) {
+            System.out.println(user1);
+        }
+    }
+
+    @Test
+    public void findAllUseTrim() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setId("09ec5fcea620c168936deee53a9cdcfb");
+        List<User> allUser = mapper.findAllUser(user);
+        for (User user1 : allUser) {
+            System.out.println(user1);
+        }
+    }
+
+    @Test
+    public void findByCondition() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        // user.setId("09ec5fcea620c168936deee53a9cdcfb");
+        user.setName("阿");
+        List<User> allUser = mapper.findAllUser(user);
+        for (User user1 : allUser) {
+            System.out.println(user1);
+        }
+    }
+
+    @Test
+    public void findAllUseForeach() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<String> list = new ArrayList<>();
+        list.add("09ec5fcea620c168936deee53a9cdcfb");
+        list.add("09ec5fcea620c168936deee53a9cdcff");
+        List<User> allUseForeach = mapper.findAllUseForeach(list);
+        for (User useForeach : allUseForeach) {
+            System.out.println(useForeach);
+        }
+    }
+
+    @Test
+    public void findAllUserUseBind() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setName("阿");
+        List<User> allUserUseBind = mapper.findAllUserUseBind(user);
+        for (User user1 : allUserUseBind) {
+            System.out.println(user1);
+        }
     }
 }

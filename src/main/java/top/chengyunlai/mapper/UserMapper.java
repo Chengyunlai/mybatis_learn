@@ -1,6 +1,7 @@
 package top.chengyunlai.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import top.chengyunlai.bean.Department;
 import top.chengyunlai.bean.User;
 
@@ -21,7 +22,11 @@ public interface UserMapper {
     List<User> findAllUseDiscriminator();
 
     List<User> findAllLazy();
-
+    List<User> findAllUser(User user);
+    List<User> findAllUseTrim(User user);
+    List<User> findByCondition(User user);
+    List<User> findAllUseForeach(@Param("ids") List<String> ids);
+    List<User> findAllUserUseBind(User user);
     List<User>findAllByDepartmentId(String departmentId);
 
     List<User> findAllByDepartmentIdProvider(String departmentId);

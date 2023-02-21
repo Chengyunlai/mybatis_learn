@@ -49,4 +49,17 @@
     <select id="findAll2" resultMap="departmentWithConstructor">
         select * from tbl_department;
     </select>
+
+    <!--动态sql的学习-->
+    <select id="findAll3" parameterType="department" resultType="department">
+        select * from tbl_department
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null">
+                and name like concat('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
 </mapper>
