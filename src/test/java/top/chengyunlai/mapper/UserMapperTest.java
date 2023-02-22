@@ -23,6 +23,8 @@ public class UserMapperTest {
     static {
         InputStream xml = null;
         try {
+            // MyBatis使用了Resources类来加载配置文件。Resources是一个工具类，它提供了一组静态方法来方便地读取类路径下的资源文件。
+            // 其中getResourceAsStream方法可以读取类路径下的资源文件，并将其作为一个InputStream返回。
             xml = Resources.getResourceAsStream("mybatis-config.xml");
         } catch (IOException e) {
             throw new RuntimeException(e);

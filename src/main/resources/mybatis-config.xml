@@ -85,6 +85,8 @@
         <!--<mapper resource="top/chengyunlai/mapper/UserMapper.xml"/>-->
         <!--扫描要配合@Mapper注解-->
         <package name="top.chengyunlai.mapper"></package>
+        <!--<mapper class="top.chengyunlai.mapper.DepartmentAnnotationMapper"/>-->
+        <!--<mapper class="top.chengyunlai.mapper.UserAnnotationMapper"/>-->
     </mappers>
 
 </configuration>
