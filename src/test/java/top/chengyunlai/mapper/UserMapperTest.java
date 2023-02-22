@@ -1,5 +1,6 @@
 package top.chengyunlai.mapper;
 
+import net.sf.cglib.beans.BeanMap;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -11,7 +12,9 @@ import top.chengyunlai.bean.User;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -210,6 +213,64 @@ public class UserMapperTest {
         List<User> allUserUseBind = mapper.findAllUserUseBind(user);
         for (User user1 : allUserUseBind) {
             System.out.println(user1);
+        }
+    }
+
+    @Test
+    public void updateUserByID() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setId("09ec5fcea620c168936deee53a9cdcff");
+        user.setName("程云来");
+        user.setAge(180);
+        mapper.updateUserByID(user);
+    }
+
+    /**
+     * @Description:实体类转Map
+     *
+     * 这里操作一手更新操作，将传入的实体类转为Map，然后用foreach进行更新
+     *
+     * 这样的好处是有设置元素的地方可以被更新到，而没有设置元素的地方不会被更新到
+     *
+     * @Param: []
+     * @return: void
+     * @Author: chengyunlai
+     * @Date: 2023/2/22
+     */
+    @Test
+    public void cglibTest(){
+        User user = new User();
+        user.setName("老四");
+        BeanMap beanMap = BeanMap.create(user);
+        System.out.println(beanMap);
+    }
+
+    @Test
+    public void updateUserByMap() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setName("老四");
+        BeanMap beanMap = BeanMap.create(user);
+        System.out.println(beanMap);
+        // {birthday=null, name=老四, id=null, department=null, version=null, age=null}
+
+        Map<String, Object> departmentMap = new HashMap<>(2);
+        departmentMap.put("id", "09ec5fcea620c168936deee53a9cdcff");
+        departmentMap.put("beanMap", beanMap);
+        mapper.updateUserByMap(departmentMap);
+        sqlSession.commit();
+    }
+
+    @Test
+    public void findAllBySqlColumns() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> allBySqlColumns = mapper.findAllBySqlColumns();
+        for (User allBySqlColumn : allBySqlColumns) {
+            System.out.println(allBySqlColumn);
         }
     }
 }

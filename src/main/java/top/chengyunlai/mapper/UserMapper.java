@@ -6,6 +6,7 @@ import top.chengyunlai.bean.Department;
 import top.chengyunlai.bean.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName
@@ -33,8 +34,11 @@ public interface UserMapper {
 
     List<User> findAllUseTypeHandler();
 
-    // void saveUser(User user);
+    List<User> findAllBySqlColumns();
 
+    // void saveUser(User user);
+    void updateUserByID(User user);
+    void updateUserByMap(Map user);
     // 缓存
     int cleanCache();
 

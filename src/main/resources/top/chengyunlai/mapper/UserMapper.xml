@@ -185,4 +185,39 @@
         select * from tbl_user
         where name like #{namelike}
     </select>
+    
+    <update id="updateUserByID" parameterType="user">
+        update tbl_user
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="age &gt;0 and age &lt;100">
+                age = #{age},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--键值对的 key 是 index ，value 是 item-->
+    <!--{name=老四, tel=null, id=null, users=null}-->
+    <!--${key} 是引用属性，不能用#{}，不然会以?占位，这里我们需要的是name = ?-->
+    <update id="updateUserByMap" parameterType="map">
+        update tbl_user
+        <foreach collection="beanMap" index="key" item="value" open="set " separator=",">
+            <if test="value != null">
+                ${key} = #{value}
+            </if>
+        </foreach>
+        where id = #{id}
+    </update>
+
+    <sql id="columns">
+        id,name,age
+    </sql>
+
+    <select id="findAllBySqlColumns" resultType="user">
+        select <include refid="columns"></include> from tbl_user;
+    </select>
+
 </mapper>
