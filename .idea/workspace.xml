@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="set的动态sql">
-      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/DepartmentAnnotationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/UserAnnotationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/provider/UserMapperProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/DepartmentAnnotationMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserAnnotationMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="注解SQL以及注解Provider的基本使用">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/top/chengyunlai/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,27 +47,28 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "last_opened_file_path": "W:/workSpace/javaSpace/Mybatis_learn/mybatis_learn/src/main/java/top/chengyunlai/mapper",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8.0.3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;W:/workSpace/javaSpace/Mybatis_learn/mybatis_learn/src/main/java/top/chengyunlai/mapper&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="W:\workSpace\javaSpace\Mybatis_learn\mybatis_learn\src\main\java\top\chengyunlai\mapper" />
@@ -84,7 +82,7 @@
       <recent name="top.chengyunlai.mapper" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserAnnotationMapperTest.deleteById">
+  <component name="RunManager" selected="JUnit.UserMapperTest.transactionManager">
     <configuration name="UserAnnotationMapperTest.deleteById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
@@ -96,54 +94,6 @@
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
       <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserAnnotationMapperTest" />
       <option name="METHOD_NAME" value="deleteById" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAnnotationMapperTest.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis_learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
-      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserAnnotationMapperTest" />
-      <option name="METHOD_NAME" value="findAll" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAnnotationMapperTest.findAllByExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis_learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
-      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserAnnotationMapperTest" />
-      <option name="METHOD_NAME" value="findAllByExample" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAnnotationMapperTest.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis_learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
-      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserAnnotationMapperTest" />
-      <option name="METHOD_NAME" value="save" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -165,13 +115,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserMapperTest.findAllLazy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis_learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
+      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
+      <option name="METHOD_NAME" value="findAllLazy" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.findByIdUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis_learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
+      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
+      <option name="METHOD_NAME" value="findByIdUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.transactionManager" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis_learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.chengyunlai.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
+      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
+      <option name="METHOD_NAME" value="transactionManager" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserMapperTest.transactionManager" />
+        <item itemvalue="JUnit.UserMapperTest.findByIdUser" />
+        <item itemvalue="JUnit.UserMapperTest.findAllLazy" />
         <item itemvalue="JUnit.UserAnnotationMapperTest.deleteById" />
         <item itemvalue="JUnit.UserAnnotationMapperTest.updateByExample" />
-        <item itemvalue="JUnit.UserAnnotationMapperTest.save" />
-        <item itemvalue="JUnit.UserAnnotationMapperTest.findAllByExample" />
-        <item itemvalue="JUnit.UserAnnotationMapperTest.findAll" />
       </list>
     </recent_temporary>
   </component>
@@ -186,7 +184,10 @@
       <workItem from="1676783237190" duration="23181000" />
       <workItem from="1676857823666" duration="24675000" />
       <workItem from="1676941170600" duration="11790000" />
-      <workItem from="1677027505467" duration="16194000" />
+      <workItem from="1677027505467" duration="16584000" />
+      <workItem from="1677118967481" duration="738000" />
+      <workItem from="1677160956172" duration="118000" />
+      <workItem from="1677205776651" duration="9498000" />
     </task>
     <task id="LOCAL-00001" summary="基本配置文件的配置信息；单表查询；关联表查询">
       <created>1676797003483</created>
@@ -237,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677030922846</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="注解SQL以及注解Provider的基本使用">
+      <created>1677073226226</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1677073226226</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +270,8 @@
     <MESSAGE value="使用鉴别器决定如何封装结果集" />
     <MESSAGE value="select的动态sql" />
     <MESSAGE value="set的动态sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="set的动态sql" />
+    <MESSAGE value="注解SQL以及注解Provider的基本使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="注解SQL以及注解Provider的基本使用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

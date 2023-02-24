@@ -211,6 +211,15 @@
         </foreach>
         where id = #{id}
     </update>
+    <update id="update" parameterType="user">
+        UPDATE tbl_user
+        <set>
+            <if test="name != null">
+                name = #{name}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
 
     <sql id="columns">
         id,name,age
@@ -218,6 +227,9 @@
 
     <select id="findAllBySqlColumns" resultType="user">
         select <include refid="columns"></include> from tbl_user;
+    </select>
+    <select id="findByIdUser" resultType="user" parameterType="user">
+        SELECT * from tbl_user WHERE id = #{id};
     </select>
 
 </mapper>

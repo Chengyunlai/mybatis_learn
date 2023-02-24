@@ -43,6 +43,11 @@ public class UserMapperTest {
         for (User user : allLazy) {
             System.out.println(user);
         }
+        // sqlSession.clearCache(); // 手动清空缓存，直接清空一级缓存
+        List<User> allLazy2 = mapper.findAllLazy();
+        for (User user : allLazy2) {
+            System.out.println(user);
+        }
     }
 
     @Test
@@ -274,5 +279,52 @@ public class UserMapperTest {
         for (User allBySqlColumn : allBySqlColumns) {
             System.out.println(allBySqlColumn);
         }
+    }
+
+    /**
+     * 一级缓存固然好用，但小心一个比较危险的东西：一级缓存是存放到 SqlSession 中，
+     * 如果我们在查询到数据后，直接在数据对象上作修改，修改之后又重新查询相同的数据，虽然此时一级缓存可以生效，
+     * 但因为存放的数据其实是对象的引用，导致第二次从一级缓存中查询到的数据，就是我们刚刚改过的数据，这样可能会发生一些错误。
+     */
+    @Test
+    public void findByIdUser() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setId("09ec5fcea620c168936deee53a9cdcfb");
+        User byIdUser = mapper.findByIdUser(user);
+        byIdUser.setName("战三");
+        System.out.println(byIdUser);
+        System.out.println(user); // User(id=09ec5fcea620c168936deee53a9cdcfb, name=战三, age=18, birthday=2003年08月08日, version=0, department=null)
+        User byIdUser1 = mapper.findByIdUser(user);
+        System.out.println(byIdUser1); // User(id=09ec5fcea620c168936deee53a9cdcfb, name=战三, age=18, birthday=2003年08月08日, version=0, department=null)
+        System.out.println(byIdUser1 == byIdUser);
+    }
+    @Test
+    public void transactionManager(){
+        // 开启事务
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        // openSession(false)表示开启事务
+        // openSession(true)表示关闭事务
+
+        // 底层默认是开启事务的 : return openSessionFromDataSource(configuration.getDefaultExecutorType(), null, false);
+
+        SqlSession sqlSession2 = sqlSessionFactory.openSession(false);
+        UserMapper userMapper2 = sqlSession2.getMapper(UserMapper.class);
+
+        User user = new User();
+        user.setId("09ec5fcea620c168936deee53a9cdcfb");
+        User user1 = userMapper2.findByIdUser(user);
+        // 刚查出来的数据中，name为"测试产品部"
+        user1.setName("事务控制开启");
+        userMapper2.update(user1);
+
+        List<User> userList = userMapper.findAll();
+        userList.forEach(System.out::println);
+
+        sqlSession.close();
+        sqlSession2.close();
     }
 }

@@ -54,6 +54,12 @@
         </environment>
         <!--生产环境-->
         <environment id="production">
+            <!--
+            在 MyBatis 中有两种事务管理器：
+            JDBC – 这个配置直接使用了 JDBC 的提交和回滚方法，它依赖从数据源获得的连接来管理事务作用域。
+            MANAGED – 使用外置的事务管理器（如 WebLogic 、JBOSS 等），这种情况下几乎不作任何操作，只预留了是否关闭连接的配置
+            -->
+            <!-- 配置了事务管理器 -->
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${prod.driverClassName}"/>

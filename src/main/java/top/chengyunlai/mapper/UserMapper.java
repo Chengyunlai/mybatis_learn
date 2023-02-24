@@ -42,4 +42,8 @@ public interface UserMapper {
     // 缓存
     int cleanCache();
 
+    User findByIdUser(User user);
+
+    void update(User user);
+
 }
