@@ -38,7 +38,10 @@
     </typeHandlers>
 
     <objectFactory type="top.chengyunlai.objectFactory.ExtendsObjectFactory"/>
-
+    <!--插件-->
+    <plugins>
+        <plugin interceptor="top.chengyunlai.plugin.CustomInterceptor"/>
+    </plugins>
     <!--它允许我们定义多个环境，以分别定义不同的数据库连接配置。
     这种场景在我们平时开发中是很常见的：开发、测试、生产分别要用到 3 种不同的环境，连接 3 个不同的数据库，这个时候就需要分别配置了。
     不过，尽管我们可以定义多个环境配置，但激活生效的只允许选择一个，激活的方式是在 <environments> 标签上声明 default 属性。-->
