@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="事务的控制">
-      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/plugin/CustomInterceptor.java" afterDir="false" />
+    <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="Mybatis的拦截器学习">
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/plugin/PerformanceInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +80,8 @@
       <recent name="top.chengyunlai.mapper" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserMapperTest.updateUserByID">
-    <configuration name="UserAnnotationMapperTest.deleteById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserMapperTest.findAllLazy">
+    <configuration name="UserMapperTest.findAllByDepartmentIdProvider" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis_learn" />
       <extension name="coverage">
         <pattern>
@@ -89,8 +90,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="top.chengyunlai.mapper" />
-      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserAnnotationMapperTest" />
-      <option name="METHOD_NAME" value="deleteById" />
+      <option name="MAIN_CLASS_NAME" value="top.chengyunlai.mapper.UserMapperTest" />
+      <option name="METHOD_NAME" value="findAllByDepartmentIdProvider" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -162,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserMapperTest.findAllLazy" />
         <item itemvalue="JUnit.UserMapperTest.updateUserByID" />
+        <item itemvalue="JUnit.UserMapperTest.findAllByDepartmentIdProvider" />
         <item itemvalue="JUnit.UserMapperTest.transactionManager" />
         <item itemvalue="JUnit.UserMapperTest.findByIdUser" />
-        <item itemvalue="JUnit.UserMapperTest.findAllLazy" />
-        <item itemvalue="JUnit.UserAnnotationMapperTest.deleteById" />
       </list>
     </recent_temporary>
   </component>
@@ -184,7 +185,8 @@
       <workItem from="1677027505467" duration="16584000" />
       <workItem from="1677118967481" duration="738000" />
       <workItem from="1677160956172" duration="118000" />
-      <workItem from="1677205776651" duration="12159000" />
+      <workItem from="1677205776651" duration="12716000" />
+      <workItem from="1677325865527" duration="6808000" />
     </task>
     <task id="LOCAL-00001" summary="基本配置文件的配置信息；单表查询；关联表查询">
       <created>1676797003483</created>
@@ -249,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677244303546</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Mybatis的拦截器学习">
+      <created>1677247081625</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1677247081625</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +285,8 @@
     <MESSAGE value="set的动态sql" />
     <MESSAGE value="注解SQL以及注解Provider的基本使用" />
     <MESSAGE value="事务的控制" />
-    <option name="LAST_COMMIT_MESSAGE" value="事务的控制" />
+    <MESSAGE value="Mybatis的拦截器学习" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mybatis的拦截器学习" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

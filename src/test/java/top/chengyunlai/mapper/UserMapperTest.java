@@ -44,10 +44,10 @@ public class UserMapperTest {
             System.out.println(user);
         }
         // sqlSession.clearCache(); // 手动清空缓存，直接清空一级缓存
-        List<User> allLazy2 = mapper.findAllLazy();
-        for (User user : allLazy2) {
-            System.out.println(user);
-        }
+        // List<User> allLazy2 = mapper.findAllLazy();
+        // for (User user : allLazy2) {
+        //     System.out.println(user);
+        // }
     }
 
     @Test
