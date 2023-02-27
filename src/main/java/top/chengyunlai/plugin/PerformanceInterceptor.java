@@ -1,7 +1,9 @@
 package top.chengyunlai.plugin;
 
-import org.apache.ibatis.executor.CachingExecutor;
+
 import org.apache.ibatis.executor.Executor;
+
+
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.logging.jdbc.PreparedStatementLogger;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -10,11 +12,14 @@ import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
-import org.apache.ibatis.session.RowBounds;
 
-import java.beans.Statement;
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  * @ClassName
@@ -38,9 +43,15 @@ import java.sql.PreparedStatement;
 // })
 @Intercepts({
         @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
-        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
+        @Signature(type = StatementHandler.class, method = "query", args = {Statement.class, ResultHandler.class}),
 })
 public class PerformanceInterceptor implements Interceptor {
+    private long maxTolerate;
+
+    @Override
+    public void setProperties(Properties properties) {
+        this.maxTolerate = Long.parseLong(properties.getProperty("maxTolerate"));
+    }
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -49,12 +60,28 @@ public class PerformanceInterceptor implements Interceptor {
         Object retVal = invocation.proceed(); // 执行
         long endTime = System.currentTimeMillis();
         // 此处我们先写死1000ms吧
-        if (endTime - startTime > 10) {
-            CachingExecutor statement = (CachingExecutor) invocation.getTarget();
-            String statementToString = statement.toString();
-            System.out.println("发现慢SQL：" + statementToString);
+        if (endTime - startTime > maxTolerate) {
+            Statement statement = (Statement) invocation.getArgs()[0];
+            // statement被MyBatis代理了一层，需要取到target
+            Field targetField = statement.getClass().getSuperclass().getDeclaredField("h");
+            targetField.setAccessible(true);
+            PreparedStatementLogger target = (PreparedStatementLogger) targetField.get(statement);
+            PreparedStatement preparedStatement = target.getPreparedStatement();
+            String statementToString = preparedStatement.toString();
+            System.out.println("发现慢SQL：" + getSql(statementToString));
             System.out.println("执行时间：" + (endTime - startTime) + "ms");
         }
         return retVal;
     }
+    private String getSql(String statementToString) {
+        // 借助正则表达式的贪心特性，可以保证一次性取到最后
+        Pattern pattern = Pattern.compile("(SELECT |INSERT |UPDATE |DELETE|select|insert|update|delete ).*");
+        Matcher matcher = pattern.matcher(statementToString);
+        if (matcher.find()) {
+            return matcher.group();
+        }
+        return statementToString;
+    }
 }
+
+

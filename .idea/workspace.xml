@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45c2799f-9e0b-4a55-839c-07c459c52ec0" name="Changes" comment="Mybatis的拦截器学习">
-      <change afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/plugin/PerformanceInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/chengyunlai/plugin/PerformanceInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/chengyunlai/plugin/PerformanceInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/chengyunlai/mapper/UserMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,10 +163,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.UserMapperTest.findAllLazy" />
+        <item itemvalue="JUnit.UserMapperTest.findByIdUser" />
         <item itemvalue="JUnit.UserMapperTest.updateUserByID" />
         <item itemvalue="JUnit.UserMapperTest.findAllByDepartmentIdProvider" />
         <item itemvalue="JUnit.UserMapperTest.transactionManager" />
-        <item itemvalue="JUnit.UserMapperTest.findByIdUser" />
       </list>
     </recent_temporary>
   </component>
@@ -187,6 +186,8 @@
       <workItem from="1677160956172" duration="118000" />
       <workItem from="1677205776651" duration="12716000" />
       <workItem from="1677325865527" duration="6808000" />
+      <workItem from="1677389842964" duration="904000" />
+      <workItem from="1677461893092" duration="5006000" />
     </task>
     <task id="LOCAL-00001" summary="基本配置文件的配置信息；单表查询；关联表查询">
       <created>1676797003483</created>
